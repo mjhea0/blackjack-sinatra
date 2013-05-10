@@ -3,7 +3,7 @@ Blackjack-Sinatra
 
 Working App: http://desolate-bayou-1140.herokuapp.com/
 
-To create a basic application:
+To create a basic application in Sinatra:
 -----------------------------
 
 You need three files.
@@ -37,8 +37,10 @@ Deploy
     $ git commit -am "initial commit"
     $ heroku create <my-app-name>
     $ git push heroku master
+    
+Naviagate to the url or curl it.
 
-That's right: No Procfile!
+That's right: No Procfile needed!
 
 To work with Blackjack-Sinatra:
 -----------------------------
