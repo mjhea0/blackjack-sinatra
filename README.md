@@ -1,28 +1,31 @@
 blackjack-sinatra
 =================
 
-1. Create an acount at Heroku.
-1. Install the gem sudo gem install heroku.
-1. If you do not have an SSH key you'll need to generate one and tell Heroku about it
-1. Clone this repo
-1. heroku create [optional-app-name]
-1. git push heroku master
-
 Want a database? Let's look at how to implement that. 
 
+1. Create an account on Heroku.
+1. Install the gem sudo gem install heroku.
+1. Generate an SSH key.
 
 Putting it up on Heroku
 
-  $ git clone 
-  $ gem install bundler
-  $ bundle
-  $ heroku create -s cedar mywebapp
-  $ git push heroku master
-  $ bundle exec heroku open
+1. $ git clone 
+1. $ gem install bundler
+1. $ bundle
+1. $ heroku create
+1. $ git push heroku master
+1. $ bundle exec heroku open
+
 Running it locally
 
-  $ git clone 
-  $ gem install bundler
-  $ bundle
-  $ bundle exec foreman
-Navigate to localhost:5000 | 5100
+1. $ git clone 
+1. $ gem install bundler
+1. $ bundle
+1. $ bundle exec foreman
+1. Navigate to localhost:5000 | 5100
+
+Update
+
+1. git add .
+1. git commit -m "updated the header and footer"
+1. git push heroku master
