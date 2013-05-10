@@ -51,22 +51,23 @@ To work with Blackjack-Sinatra:
 
 ### PUSHing it to Heroku
 
-1. $ git clone git@github.com:mjhea0/blackjack-sinatra.git
-1. $ bundle install
-1. $ git init
-1. $ git add .
-1. $ git commit -m "initial commit"
-1. $ heroku create <my-app-name>.
-1. $ git push heroku master
+    $ git clone git@github.com:mjhea0/blackjack-sinatra.git
+    $ bundle install
+    $ git init
+    $ git add .
+    $ git commit -m "initial commit"
+    $ heroku create <my-app-name>.
+    $ git push heroku master
 
 ### Running it locally
 
-1. $ git clone git@github.com:mjhea0/blackjack-sinatra.git 
-1. $ ruby main.rb
-1. Navigate to localhost:4567 in your browser
+    $ git clone git@github.com:mjhea0/blackjack-sinatra.git 
+    $ ruby main.rb
 
-### Update
+Navigate to localhost:4567 in your browser
 
-1. git add .
-1. git commit -m "updated the header and footer"
-1. git push heroku master
+### PUSH code updates to Heroku
+
+    git add .
+    git commit -m "updated the header and footer"
+    git push heroku master
