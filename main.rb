@@ -13,11 +13,14 @@ helpers do
   end
 
   def find_suit(suit)
-    ret_val = case suit
-      when 'H' then 'hearts'
-      when 'D' then 'diamonds'
-      when 'S' then 'spades'
-      when 'C' then 'clubs'
+    if suit == 'H'
+      ret_val = 'Hearts'
+    elsif suit == 'D'
+      ret_val = 'Diamonds'
+    elsif suit == 'S'
+      ret_val = 'Spades'
+    elsif suit == 'C'
+      ret_val = 'Clubs'
     end
     ret_val
   end
@@ -33,15 +36,15 @@ helpers do
       when '8' then '8'
       when '9' then '9'
       when '10' then '10'
-      when 'J' then 'jack'
-      when 'Q' then 'queen'
-      when 'K' then 'king'
-      when 'A' then 'ace'
+      when 'J' then 'Jack'
+      when 'Q' then 'Queen'
+      when 'K' then 'King'
+      when 'A' then 'Ace'
     end
     ret_val
   end
 
-  def total(cards) # From Tealeaf OO solution video
+  def total(cards) 
     face_values = cards.map{|card| card[1] }
 
     total = 0
@@ -53,7 +56,6 @@ helpers do
       end
     end
 
-    #correct for Aces
     face_values.select{|val| val == "A"}.count.times do
       break if total <= 21
       total -= 10
@@ -80,7 +82,7 @@ end
 post '/new_user' do
   session[:username] = params['username']
   if session[:username].length == 0
-    @alert_message = "You didn't enter your name, please try again."
+    @alert_message = "You didn't enter your name. Please try again."
     @alert_type = "alert-error"
     erb :new_user
   else
@@ -91,8 +93,8 @@ end
 get '/game' do
 
   suits = ['H', 'D', 'C', 'S']
-  values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-  session[:deck] = suits.product(values).shuffle!
+  rank = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+  session[:deck] = suits.product(rank).shuffle!
 
   session[:dealer_cards] = []
   session[:player_cards] = []
@@ -103,7 +105,7 @@ get '/game' do
   session[:dealer_cards] << session[:deck].pop
 
   if total(session[:player_cards]) == 21
-    @alert_message = "Congratulations, you got Blackjack! You win."
+    @alert_message = "Congratulations! You got Blackjack! You win."
     @alert_type = "alert-success"
     @game_over = true
   end
@@ -114,11 +116,11 @@ end
 post '/game/hit' do
   session[:player_cards] << session[:deck].pop
   if total(session[:player_cards]) == 21
-    @alert_message = "Congratulations, you got Blackjack. You win!"
+    @alert_message = "Congratulations! You got Blackjack! You win."
     @alert_type = "alert-success"
     @game_over = true
   elsif total(session[:player_cards]) > 21
-    @alert_message = "Sorry, you bust. You lose."
+    @alert_message = "Sorry. You busted. You lose."
     @alert_type = "alert-error"
     @game_over = true
   end
@@ -135,11 +137,11 @@ post '/game/stay' do
     @alert_type = "alert-success"
     @game_over = true
   elsif total(session[:player_cards]) > total(session[:dealer_cards])
-    @alert_message = "Congratulations, your score is higher than the dealer. You win!"
+    @alert_message = "Congratulations. Your score is higher than the dealer. You win!"
     @alert_type = "alert-success"
     @game_over = true
   else
-    @alert_message = "Sorry, your score isn't higher than the dealer. You lose."
+    @alert_message = "Sorry. Your score isn't higher than the dealer. You lose."
     @alert_type = "alert-error"
     @game_over = true
   end
