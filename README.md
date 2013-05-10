@@ -49,14 +49,14 @@ To work with Blackjack-Sinatra:
 1. Install the gem `sudo gem install heroku` (if needed)
 1. Generate an SSH key. (if needed)
 
-### Putting it up on Heroku
+### PUSHing it to Heroku
 
 1. $ git clone git@github.com:mjhea0/blackjack-sinatra.git
 1. $ bundle install
 1. $ git init
 1. $ git add .
 1. $ git commit -m "initial commit"
-1. $ heroku create <my-app-name.
+1. $ heroku create <my-app-name>.
 1. $ git push heroku master
 
 ### Running it locally
