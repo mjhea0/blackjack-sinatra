@@ -1,5 +1,5 @@
-<h1>Blackjack Sinatra</h1>
-<p>Welcome to Blackjack <%= session[:username] %>. Good Luck!</p>
+<h1>Ruby Blackjack Sinatra</h1>
+<p>Welcome to Blackjack, <%= session[:username] %>. Good Luck!</p>
 
 <div class="row">
   <div class="span6">
@@ -7,7 +7,8 @@
     <div class="cards player-cards">
       <% session[:player_cards].each do |card| %> 
       <span class="card">
-        <img src="/images/cards/<%= find_suit(card[0]) %>_<%= find_face_value(card[1]) %>.jpg" /></span>
+        <%= find_suit(card[0]) %>
+        <%= find_face_value(card[1]) %></span>
       <% end %>
     </div>
   </div>
