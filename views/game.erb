@@ -48,7 +48,7 @@
 <div>
   <h4 class="span6"><%= session[:username] %>'s total is: <em><%= sum(session[:player_cards]) %></em></span></h4>
   <% if @game_over == true %>
-  <h4 class="span6">Dealer's total is: <em><%= sum(session[:dealer_cards]) %><</em>/span></h4>
+  <h4 class="span6">Dealer's total is: <em><%= sum(session[:dealer_cards]) %></em>/span></h4>
   <% end %>
 </div>
 <br/>
