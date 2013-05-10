@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blackjack Sinatra</title>
+    <title>Blackjack Ruby</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="/application.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   </head>
-
   <body>
-
     <div class="navbar navbar-static-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-           <span class="brand" href="/">Blackjack Sinatra</span>
+           <span class="brand" href="/">Blackjack Ruby</span>
             <% if user_logged_in? %>
             <ul class="nav pull-right">
               <li><a href="/">New Game</a></li>
               <li><a href="/logout">Logout</a></li>
             </ul>
+            <% else %>
+            <ul class="nav pull-right">
+              <li><a href="https://github.com/mjhea0/blackjack-sinatra">Fork on Github</a></li>
+            </ul>
             <% end %>
         </div>
       </div>
     </div>
-
   <div class="container">
+    <br/>
     <%if @alert_message %>
-      <div class="alert <%= @alert_type %>" ><%= @alert_message %></div>
+      <h4><div class="alert <%= @alert_type %>" ><%= @alert_message %></div></h4>
     <% end %>
     <%= yield %>
   </div>

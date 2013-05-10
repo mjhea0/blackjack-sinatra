@@ -44,27 +44,28 @@ helpers do
     ret_val
   end
 
-  def total(cards) 
+  def sum(cards) 
     face_values = cards.map{|card| card[1] }
 
-    total = 0
+    sum = 0
     face_values.each do |val|
       if val == "A"
-        total += 11
+        sum += 11
       else
-        total += (val.to_i == 0 ? 10 : val.to_i)
+        sum += (val.to_i == 0 ? 10 : val.to_i)
       end
     end
 
     face_values.select{|val| val == "A"}.count.times do
-      break if total <= 21
-      total -= 10
+      break if sum <= 21
+      sum -= 10
     end
 
-    total
+    sum
   end
 
 end
+
 
 # Home 
 get '/' do
@@ -104,8 +105,8 @@ get '/game' do
   session[:player_cards] << session[:deck].pop
   session[:dealer_cards] << session[:deck].pop
 
-  if total(session[:player_cards]) == 21
-    @alert_message = "Congratulations! You got Blackjack! You win."
+  if sum(session[:player_cards]) == 21
+    @alert_message = "Congratulations! You got a Blackjack!"
     @alert_type = "alert-success"
     @game_over = true
   end
@@ -115,11 +116,11 @@ end
 
 post '/game/hit' do
   session[:player_cards] << session[:deck].pop
-  if total(session[:player_cards]) == 21
-    @alert_message = "Congratulations! You got Blackjack! You win."
+  if sum(session[:player_cards]) == 21
+    @alert_message = "Congratulations! You got a Blackjack!"
     @alert_type = "alert-success"
     @game_over = true
-  elsif total(session[:player_cards]) > 21
+  elsif sum(session[:player_cards]) > 21
     @alert_message = "Sorry. You busted. You lose."
     @alert_type = "alert-error"
     @game_over = true
@@ -129,14 +130,14 @@ end
 
 post '/game/stay' do
 
-  while total(session[:dealer_cards]) < 17
+  while sum(session[:dealer_cards]) < 17
     session[:dealer_cards] << session[:deck].pop
   end
-  if total(session[:dealer_cards]) > 21
+  if sum(session[:dealer_cards]) > 21
     @alert_message = "Dealer busts. You win!"
     @alert_type = "alert-success"
     @game_over = true
-  elsif total(session[:player_cards]) > total(session[:dealer_cards])
+  elsif sum(session[:player_cards]) > sum(session[:dealer_cards])
     @alert_message = "Congratulations. Your score is higher than the dealer. You win!"
     @alert_type = "alert-success"
     @game_over = true

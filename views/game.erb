@@ -1,34 +1,43 @@
-<h1>Ruby Blackjack Sinatra</h1>
-<p>Welcome to Blackjack, <%= session[:username] %>. Good Luck!</p>
+<br/>
+<center><h2>Welcome to Blackjack, <em><%= session[:username] %></em>. Cheers!</h2></center>
+<hr>
 
 <div class="row">
   <div class="span6">
-    <h3>Player Cards</h3>
-    <div class="cards player-cards">
+    <h3><%= session[:username] %>'s Cards</h3>
+    <div>
       <% session[:player_cards].each do |card| %> 
-      <span class="card">
-        <%= find_suit(card[0]) %>
-        <%= find_face_value(card[1]) %>.jpg" /></span>
+      <span>
+        <ul>
+          <li><%= find_face_value(card[1]) %> of <%= find_suit(card[0]) %></li>
+        </ul>
+      </span>
       <% end %>
     </div>
   </div>
   
   <div class="span6">
-    <h3>Dealer Cards</h3>
-    <div class="cards dealer-cards">
+    <h3>Dealer's Cards</h3>
+    <div>
 
       <% if @game_over == true %>
         <% session[:dealer_cards].each_with_index do |card, index| %> 
-          <span class="card <%= index %> ">
-            <img src="/images/cards/<%= find_suit(card[0]) %>_<%= find_face_value(card[1]) %>.jpg" />
+          <span>
+            <ul>
+              <li><%= find_face_value(card[1]) %> of <%= find_suit(card[0]) %></li>
+            </ul>
          </span>
         <% end %>
       <% else %>
-        <span class="card">
-            <img src="/images/cards/cover.jpg" />
+        <span>
+          <ul>
+            <li>Unknown Card</li>
+          </ul>
         </span>
-        <span class="card">
-          <img src="/images/cards/<%= find_suit(session[:dealer_cards][1][0]) %>_<%= find_face_value(session[:dealer_cards][1][1]) %>.jpg" />
+        <span>
+          <ul>
+            <li><%= find_face_value(session[:dealer_cards][1][1]) %> of <%= find_suit(session[:dealer_cards][1][0]) %></li>
+          <ul>
         </span>
       <% end %>
     </div>
@@ -36,30 +45,31 @@
 
 </div>
 
-<div class="totals row">
-  <h4 class="total player-total span6">Your total is: <%= total(session[:player_cards]) %></span></h4>
+<div>
+  <h4 class="span6"><%= session[:username] %>'s total is: <%= total(session[:player_cards]) %></span></h4>
   <% if @game_over == true %>
-  <h4 class="total dealer-total span6">Dealer total is: <%= total(session[:dealer_cards]) %></span></h4>
+  <h4 class="span6">Dealer's total is: <%= total(session[:dealer_cards]) %></span></h4>
   <% end %>
 </div>
-
+<br/>
+<br/>
 <hr>
+
+<div class="span6">
 
 <% if @game_over %>
   <a class="btn btn-large btn-block btn-primary" href="/">New Game?</a> 
 <% else %>
 
-<div class="hit-or-stay row">
-
-  <form action="/game/hit" method="post" class="span6">
+  <form action="/game/hit" method="post">
     <fieldset>
-      <button type="submit" class="btn btn-large btn-success btn-block"><i class="icon-plus"></i> Hit</button>
+      <button type="submit" class="btn btn-large btn-success btn-block">Hit Me!</button>
     </fieldset>
   </form>
-
-  <form action="/game/stay" method="post" class="span6">
+  <p><em><center>- or -<center></em></p>
+  <form action="/game/stay" method="post">
     <fieldset>
-      <button type="submit" class="btn btn-large btn-danger btn-block"><i class="icon-ban-circle"></i> Stay</button>
+      <button type="submit" class="btn btn-large btn-danger btn-block">Stay!</button>
     </fieldset>
   </form>
 </div>
