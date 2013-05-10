@@ -12,19 +12,6 @@ helpers do
     end
   end
 
-  def find_suit(suit)
-    if suit == 'H'
-      ret_val = 'Hearts'
-    elsif suit == 'D'
-      ret_val = 'Diamonds'
-    elsif suit == 'S'
-      ret_val = 'Spades'
-    elsif suit == 'C'
-      ret_val = 'Clubs'
-    end
-    ret_val
-  end
-
   def find_face_value(face_value)
     ret_val = case face_value
       when '2' then '2'
@@ -92,9 +79,8 @@ end
 
 get '/game' do
 
-  suits = ['H', 'D', 'C', 'S']
   rank = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-  session[:deck] = suits.product(rank).shuffle!
+  session[:deck] = rank.shuffle!
 
   session[:dealer_cards] = []
   session[:player_cards] = []
