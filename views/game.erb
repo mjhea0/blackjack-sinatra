@@ -7,9 +7,8 @@
     <div class="cards player-cards">
       <% session[:player_cards].each do |card| %> 
       <span class="card">
-        <%= find_face_value(card[0]) %>
-        <%= find_face_value(card[1]) %>
-      </span>
+        <%= find_suit(card[0]) %>
+        <%= find_face_value(card[1]) %></span>
       <% end %>
     </div>
   </div>
