@@ -1,3 +1,38 @@
+To create a basic application:
+-----------------------------
+
+main.rb
+
+    require 'sinatra'
+
+    get '/' do
+      "hello world"
+    end
+
+Gemfile
+
+    source :rubygems
+
+    gem 'heroku'
+    gem 'sinatra'
+    gem 'thin'
+
+config.ru
+
+    require './main'
+    run Sinatra::Application
+
+Deploy
+
+    $ bundle install
+    $ git init
+    $ git add .
+    $ git commit -am "initial commit"
+    $ heroku create <my-app-name>
+    $ git push heroku master
+
+Tha's right: No Procfile!
+
 blackjack-sinatra
 =================
 
