@@ -8,9 +8,7 @@
     <div>
       <% session[:player_cards].each do |card| %> 
       <span>
-        <ul>
-          <li><%= find_face_value(card[1]) %> of <%= find_suit(card[0]) %></li>
-        </ul>
+        <img src="/vendor/bootstrap/img/images/<%= find_face_value(card[1]) %><%= find_suit(card[0]) %>.png">
       </span>
       <% end %>
     </div>
@@ -23,21 +21,15 @@
       <% if @game_over == true %>
         <% session[:dealer_cards].each_with_index do |card, index| %> 
           <span>
-            <ul>
-              <li><%= find_face_value(card[1]) %> of <%= find_suit(card[0]) %></li>
-            </ul>
+            <img src="/vendor/bootstrap/img/images/<%= find_face_value(card[1]) %><%= find_suit(card[0]) %>.png">
          </span>
         <% end %>
       <% else %>
         <span>
-          <ul>
-            <li>Unknown Card</li>
-          </ul>
+          <img src="/vendor/bootstrap/img/images/b1fv.png">
         </span>
         <span>
-          <ul>
-            <li><%= find_face_value(session[:dealer_cards][1][1]) %> of <%= find_suit(session[:dealer_cards][1][0]) %></li>
-          <ul>
+          <img src="/vendor/bootstrap/img/images/<%= find_face_value(session[:dealer_cards][1][1]) %><%= find_suit(session[:dealer_cards][1][0]) %>.png">
         </span>
       <% end %>
     </div>

@@ -66,7 +66,6 @@ helpers do
 
 end
 
-
 # Home 
 get '/' do
   if user_logged_in?
