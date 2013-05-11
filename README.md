@@ -1,9 +1,14 @@
-http://desolate-bayou-1140.herokuapp.com/
+Blackjack-Sinatra
+================
 
-To create a basic application:
+Working App: http://desolate-bayou-1140.herokuapp.com/
+
+To create a basic application in Sinatra:
 -----------------------------
 
-main.rb
+You need three files.
+
+main.rb:
 
     require 'sinatra'
 
@@ -11,7 +16,7 @@ main.rb
       "hello world"
     end
 
-Gemfile
+Gemfile:
 
     source :rubygems
 
@@ -19,7 +24,7 @@ Gemfile
     gem 'sinatra'
     gem 'thin'
 
-config.ru
+config.ru:
 
     require './main'
     run Sinatra::Application
@@ -32,35 +37,37 @@ Deploy
     $ git commit -am "initial commit"
     $ heroku create <my-app-name>
     $ git push heroku master
+    
+Naviagate to the url or curl it.
 
-Tha's right: No Procfile!
+That's right: No Procfile needed!
 
-blackjack-sinatra
-=================
+To work with Blackjack-Sinatra:
+-----------------------------
 
-1. Create an account on Heroku.
-1. Install the gem sudo gem install heroku.
-1. Generate an SSH key.
+1. Create an account on Heroku. (if neeeded)
+1. Install the gem `sudo gem install heroku` (if needed)
+1. Generate an SSH key. (if needed)
 
-### Putting it up on Heroku
+### PUSHing it to Heroku
 
-1. $ git clone 
-1. $ gem install bundler
-1. $ bundle
-1. $ heroku create
-1. $ git push heroku master
-1. $ bundle exec heroku open
+    $ git clone git@github.com:mjhea0/blackjack-sinatra.git
+    $ bundle install
+    $ git init
+    $ git add .
+    $ git commit -m "initial commit"
+    $ heroku create <my-app-name>.
+    $ git push heroku master
 
 ### Running it locally
 
-1. $ git clone 
-1. $ gem install bundler
-1. $ bundle
-1. $ bundle exec foreman
-1. Navigate to localhost:5000 | 5100
+    $ git clone git@github.com:mjhea0/blackjack-sinatra.git 
+    $ ruby main.rb
 
-### Update
+Navigate to localhost:4567 in your browser
 
-1. git add .
-1. git commit -m "updated the header and footer"
-1. git push heroku master
+### PUSH code updates to Heroku
+
+    git add .
+    git commit -m "updated the header and footer"
+    git push heroku master
