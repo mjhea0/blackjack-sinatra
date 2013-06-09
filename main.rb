@@ -13,13 +13,14 @@ helpers do
   end
 
   def find_suit(suit)
-    if suit == 'H'
+    case suit
+    when 'H'
       ret_val = 'Hearts'
-    elsif suit == 'D'
+    when 'D'
       ret_val = 'Diamonds'
-    elsif suit == 'S'
+    when 'S'
       ret_val = 'Spades'
-    elsif suit == 'C'
+    when 'C'
       ret_val = 'Clubs'
     end
     ret_val
@@ -46,21 +47,18 @@ helpers do
 
   def sum(cards) 
     face_values = cards.map{|card| card[1] }
-
     sum = 0
-    face_values.each do |val|
-      if val == "A"
+    face_values.each do |value|
+      if value == "A"
         sum += 11
       else
-        sum += (val.to_i == 0 ? 10 : val.to_i)
+        sum += (value.to_i == 0 ? 10 : value.to_i)
       end
     end
-
-    face_values.select{|val| val == "A"}.count.times do
+    face_values.select{|value| value == "A"}.count.times do
       break if sum <= 21
       sum -= 10
     end
-
     sum
   end
 
@@ -109,7 +107,6 @@ get '/game' do
     @alert_type = "alert-success"
     @game_over = true
   end
-
   erb :game
 end
 
